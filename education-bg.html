@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education Background - NED University</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+        --primary: #800000; /* NED Maroon */
+        --secondary: #003366; /* Navy Blue */
+        --accent: #d4af37; /* Gold */
+        --light: #f8f9fa;
+        --dark: #343a40;
+    }
+    
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f5f5f5;
+        background-image: url('https://www.neduet.edu.pk/sites/default/files/styles/slideshow/public/slideshow/Slide4.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+    }
+    
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+    }
+    
+    .header {
+        background-color: var(--primary);
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .header-logo {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+        margin: 0;
+        font-weight: bold;
+    }
+    
+    .form-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: white;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        border-top: 5px solid var(--primary);
+        position: relative;
+    }
+    
+    .form-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://www.neduet.edu.pk/sites/default/files/LOGONEDUET2LOGO_1.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 50%;
+        opacity: 0.05;
+        z-index: 0;
+        pointer-events: none;
+    }
+    
+    .form-title {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 30px;
+        font-weight: bold;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    
+    .form-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent);
+    }
+    
+    .form-subtitle {
+        color: var(--secondary);
+        font-weight: bold;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+    
+    .form-label {
+        font-weight: bold;
+        color: var(--secondary);
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.25);
+    }
+    
+    .required::after {
+        content: '*';
+        color: var(--primary);
+        margin-left: 5px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        padding: 12px 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        border-radius: 0;
+    }
+    
+    .btn-primary:hover {
+        background-color: #600000;
+        border-color: #600000;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 12px 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        border-radius: 0;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #5a6268;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .progress-container {
+        margin-bottom: 30px;
+    }
+    
+    .progress {
+        height: 8px;
+        border-radius: 0;
+        background-color: #e9ecef;
+        overflow: visible;
+    }
+    
+    .progress-bar {
+        background-color: var(--primary);
+        position: relative;
+    }
+    
+    .progress-bar::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        top: -6px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary);
+        border-radius: 50%;
+    }
+    
+    .step-indicator {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    
+    .step {
+        text-align: center;
+        color: #6c757d;
+        font-size: 0.9rem;
+        position: relative;
+    }
+    
+    .step.active {
+        color: var(--primary);
+        font-weight: bold;
+    }
+    
+    .step.completed {
+        color: var(--primary);
+    }
+    
+    .step::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    
+    .step.active::before, .step.completed::before {
+        background-color: var(--primary);
+    }
+    
+    .form-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+    
+    .form-note {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary);
+    }
+    
+    .education-card {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        position: relative;
+    }
+    
+    .education-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--primary);
+    }
+    
+    .education-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 3px solid var(--primary);
+    }
+</style>
+</head>
+<body>
+<header class="header">
+    <img src="https://www.neduet.edu.pk/sites/default/files/LOGONEDUET2LOGO_1.png" alt="NED University Logo" class="header-logo">
+    <h1>NED University of Engineering & Technology</h1>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Undergraduate Admission Application</h2>
+        
+        <div class="progress-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="step-indicator">
+                <div class="step completed">Personal Information</div>
+                <div class="step active">Education Background</div>
+                <div class="step">Additional Information</div>
+            </div>
+        </div>
+        
+        <img src="https://www.neduet.edu.pk/sites/default/files/styles/medium/public/2023-05/Untitled-1.jpg" alt="NED University Library" class="education-image">
+        
+        <h4 class="form-subtitle">Education Background</h4>
+        
+        <form id="educationForm">
+            <div class="education-card">
+                <h5 class="mb-3">Matriculation / O-Level</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="matricSchool" class="form-label required">School Name</label>
+                            <input type="text" class="form-control" id="matricSchool" placeholder="Enter your school name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="matricBoard" class="form-label required">Board</label>
+                            <select class="form-control" id="matricBoard" required>
+                                <option value="">Select Board</option>
+                                <option value="Karachi">Karachi</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Sukkur">Sukkur</option>
+                                <option value="Larkana">Larkana</option>
+                                <option value="Federal">Federal</option>
+                                <option value="Cambridge">Cambridge (O-Level)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="matricYear" class="form-label required">Year of Passing</label>
+                            <select class="form-control" id="matricYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="matricMarks" class="form-label required">Total Marks / Grade</label>
+                            <input type="text" class="form-control" id="matricMarks" placeholder="Enter your marks or grade" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="education-card">
+                <h5 class="mb-3">Intermediate / A-Level</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="interCollege" class="form-label required">College Name</label>
+                            <input type="text" class="form-control" id="interCollege" placeholder="Enter your college name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="interBoard" class="form-label required">Board</label>
+                            <select class="form-control" id="interBoard" required>
+                                <option value="">Select Board</option>
+                                <option value="Karachi">Karachi</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Sukkur">Sukkur</option>
+                                <option value="Larkana">Larkana</option>
+                                <option value="Federal">Federal</option>
+                                <option value="Cambridge">Cambridge (A-Level)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="interYear" class="form-label required">Year of Passing</label>
+                            <select class="form-control" id="interYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="interMarks" class="form-label required">Total Marks / Grade</label>
+                            <input type="text" class="form-control" id="interMarks" placeholder="Enter your marks or grade" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="interGroup" class="form-label required">Group / Major</label>
+                            <select class="form-control" id="interGroup" required>
+                                <option value="">Select Group</option>
+                                <option value="Pre-Engineering">Pre-Engineering</option>
+                                <option value="Pre-Medical">Pre-Medical</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="General Science">General Science</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="highSchoolName" class="form-label required">Name of High School</label>
+                <input type="text" class="form-control" id="highSchoolName" placeholder="Enter the name of your high school" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="highSchoolGrade" class="form-label required">High School Grade/Percentage</label>
+                <input type="text" class="form-control" id="highSchoolGrade" placeholder="Enter your high school grade or percentage" required>
+            </div>
+            
+            <div class="form-note">
+                <i class="fas fa-info-circle me-2"></i> Please ensure that all educational information provided is accurate and matches your official transcripts. You may be required to provide original documents for verification during the admission process.
+            </div>
+            
+            <div class="form-footer">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <i class="fas fa-arrow-left me-2"></i> Back
+                </button>
+                <button type="button" class="btn btn-primary" onclick="saveAndContinue()">
+                    Continue <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.location.href = 'personal-info.html';
+    }
+    
+    function saveAndContinue() {
+        const matricSchool = document.getElementById('matricSchool').value;
+        const matricBoard = document.getElementById('matricBoard').value;
+        const matricYear = document.getElementById('matricYear').value;
+        const matricMarks = document.getElementById('matricMarks').value;
+        const interCollege = document.getElementById('interCollege').value;
+        const interBoard = document.getElementById('interBoard').value;
+        const interYear = document.getElementById('interYear').value;
+        const interMarks = document.getElementById('interMarks').value;
+        const interGroup = document.getElementById('interGroup').value;
+        const highSchoolName = document.getElementById('highSchoolName').value;
+        const highSchoolGrade = document.getElementById('highSchoolGrade').value;
+        
+        if (!matricSchool || !matricBoard || !matricYear || !matricMarks || !interCollege || !interBoard || !interYear || !interMarks || !interGroup || !highSchoolName || !highSchoolGrade) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+        
+        // Store data in localStorage
+        localStorage.setItem('matricSchool', matricSchool);
+        localStorage.setItem('matricBoard', matricBoard);
+        localStorage.setItem('matricYear', matricYear);
+        localStorage.setItem('matricMarks', matricMarks);
+        localStorage.setItem('interCollege', interCollege);
+        localStorage.setItem('interBoard', interBoard);
+        localStorage.setItem('interYear', interYear);
+        localStorage.setItem('interMarks', interMarks);
+        localStorage.setItem('interGroup', interGroup);
+        localStorage.setItem('highSchoolName', highSchoolName);
+        localStorage.setItem('highSchoolGrade', highSchoolGrade);
+        
+        // Navigate to next page
+        window.location.href = 'additional-info.html';
+    }
+</script>
+</body>
+</html>
+
